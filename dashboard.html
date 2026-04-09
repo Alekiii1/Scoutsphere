@@ -1,0 +1,474 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Athlete Dashboard - Manage your ScoutSphere profile" />
+  <title>ScoutSphere – Athlete Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-dashboard">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="dashboard-container">
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
+      <span class="hamburger"></span>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar" role="complementary" aria-label="Dashboard navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="logo" aria-label="ScoutSphere Home">ScoutSphere</a>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">✕</button>
+      </div>
+      
+      <nav class="sidebar-nav" aria-label="Sidebar">
+        <ul class="sidebar-menu" role="menubar">
+          <li role="none">
+            <a href="#" class="active" aria-current="page" role="menuitem">
+              <span class="nav-icon">📊</span>
+              <span class="nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem">
+              <span class="nav-icon">👤</span>
+              <span class="nav-text">My Profile</span>
+              <span class="nav-badge">3</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem">
+              <span class="nav-icon">🎬</span>
+              <span class="nav-text">My Media</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem">
+              <span class="nav-icon">💬</span>
+              <span class="nav-text">Messages</span>
+              <span class="nav-badge new">2</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem">
+              <span class="nav-icon">🔖</span>
+              <span class="nav-text">Saved Scouts</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#" role="menuitem">
+              <span class="nav-icon">📈</span>
+              <span class="nav-text">Analytics</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-section">
+          <h4 class="sidebar-title">Quick Actions</h4>
+          <ul class="sidebar-menu" role="menubar">
+            <li role="none">
+              <a href="#" role="menuitem" class="btn-upload">
+                <span class="nav-icon">⬆️</span>
+                <span class="nav-text">Upload Media</span>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#" role="menuitem">
+                <span class="nav-icon">🔗</span>
+                <span class="nav-text">Share Profile</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile-completion">
+          <div class="completion-header">
+            <span>Profile Completion</span>
+            <span class="completion-percent">75%</span>
+          </div>
+          <div class="progress-ring" aria-hidden="true">
+            <svg viewBox="0 0 36 36">
+              <path class="progress-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="progress-ring-fill" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+          </div>
+          <p class="completion-hint">Add a bio to reach 100%</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="main-content">
+      <!-- Top navbar -->
+      <header class="top-nav" role="banner">
+        <div class="search-bar" role="search">
+          <input type="search" placeholder="Search your media, scouts..." aria-label="Search dashboard" />
+          <button class="search-btn" aria-label="Submit search">🔍</button>
+        </div>
+        
+        <div class="nav-actions">
+          <button class="icon-btn" aria-label="Notifications" aria-haspopup="true" aria-expanded="false" id="notifBtn">
+            🔔
+            <span class="badge" aria-label="3 new notifications">3</span>
+          </button>
+          
+          <div class="notifications-dropdown" id="notifDropdown" role="menu" aria-hidden="true">
+            <div class="dropdown-header">
+              <h4>Notifications</h4>
+              <button class="mark-read" aria-label="Mark all as read">Mark all read</button>
+            </div>
+            <ul class="notification-list">
+              <li class="notification unread">
+                <div class="notif-icon">👁️</div>
+                <div class="notif-content">
+                  <p>KCB Academy viewed your profile</p>
+                  <time datetime="2026-03-27T18:30">2 hours ago</time>
+                </div>
+              </li>
+              <li class="notification unread">
+                <div class="notif-icon">⭐</div>
+                <div class="notif-content">
+                  <p>Coach Sarah added you to shortlist</p>
+                  <time datetime="2026-03-27T14:15">6 hours ago</time>
+                </div>
+              </li>
+              <li class="notification">
+                <div class="notif-icon">📩</div>
+                <div class="notif-content">
+                  <p>New message from Nike Academy</p>
+                  <time datetime="2026-03-26T09:00">Yesterday</time>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <button class="icon-btn" aria-label="Settings" id="settingsBtn">⚙️</button>
+          
+          <div class="user-menu" id="userMenu">
+            <button class="user-badge" aria-haspopup="true" aria-expanded="false" id="userMenuBtn">
+              <img src="https://ui-avatars.com/api/?name=John+Kamau&background=0b5ed7&color=fff" alt="John Kamau" width="36" height="36" />
+              <span class="user-name">John Kamau</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
+            
+            <div class="user-dropdown" id="userDropdown" role="menu" aria-hidden="true">
+              <div class="dropdown-user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Kamau&background=0b5ed7&color=fff&size=64" alt="" aria-hidden="true" />
+                <div>
+                  <p class="dropdown-name">John Kamau</p>
+                  <p class="dropdown-role">Athlete</p>
+                </div>
+              </div>
+              <ul role="menu">
+                <li role="none"><a href="#" role="menuitem">👤 View Profile</a></li>
+                <li role="none"><a href="#" role="menuitem">✏️ Edit Profile</a></li>
+                <li role="none"><a href="#" role="menuitem">🔒 Account Settings</a></li>
+                <li class="divider" role="separator"></li>
+                <li role="none"><a href="#" role="menuitem">❓ Help & Support</a></li>
+                <li role="none"><a href="login.html" role="menuitem" class="logout-link">🚪 Log Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner" role="region" aria-label="Welcome">
+        <div class="welcome-text">
+          <h2>Welcome back, John! 👋</h2>
+          <p>Your profile has been viewed 12 times this week. Keep uploading great content!</p>
+        </div>
+        <div class="welcome-actions">
+          <button class="btn btn-primary">Upload New Video</button>
+        </div>
+      </div>
+
+      <!-- Stats cards -->
+      <section class="stats-section" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" class="visually-hidden">Statistics Overview</h2>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon">👁️</div>
+            <div class="stat-content">
+              <h3 class="stat-number" data-count="124">0</h3>
+              <p>Profile Views</p>
+              <span class="stat-trend up">+12% this week</span>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-content">
+              <h3 class="stat-number" data-count="8">0</h3>
+              <p>Scout Shortlists</p>
+              <span class="stat-trend up">+2 new</span>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">🎥</div>
+            <div class="stat-content">
+              <h3 class="stat-number" data-count="3">0</h3>
+              <p>Videos</p>
+              <span class="stat-trend">2 processing</span>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">📸</div>
+            <div class="stat-content">
+              <h3 class="stat-number" data-count="5">0</h3>
+              <p>Photos</p>
+              <span class="stat-trend up">+1 today</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Content Grid -->
+      <div class="dashboard-grid">
+        <!-- Recent activity -->
+        <section class="activity-section" aria-labelledby="activity-heading">
+          <div class="section-header">
+            <h3 id="activity-heading">Recent Activity</h3>
+            <a href="#" class="view-all">View all</a>
+          </div>
+          <div class="activity-card">
+            <ul class="activity-list">
+              <li class="activity-item highlight">
+                <div class="activity-icon">🎥</div>
+                <div class="activity-content">
+                  <p>Your video was viewed by <strong>Scout from KCB Academy</strong></p>
+                  <time datetime="2026-03-27T17:45">Today, 5:45 PM</time>
+                </div>
+                <button class="activity-action" aria-label="View details">→</button>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">⭐</div>
+                <div class="activity-content">
+                  <p><strong>Coach Sarah</strong> added you to shortlist</p>
+                  <time datetime="2026-03-27T14:20">Today, 2:20 PM</time>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">👁️</div>
+                <div class="activity-content">
+                  <p><strong>3 new scouts</strong> viewed your profile</p>
+                  <time datetime="2026-03-27T10:00">Today, 10:00 AM</time>
+                </div>
+              </li>
+              <li class="activity-item unread">
+                <div class="activity-icon">📩</div>
+                <div class="activity-content">
+                  <p>You have <strong>2 unread messages</strong></p>
+                  <time datetime="2026-03-26T16:30">Yesterday</time>
+                </div>
+                <span class="unread-badge" aria-label="Unread">2</span>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">🏆</div>
+                <div class="activity-content">
+                  <p>Reached <strong>100 profile views</strong> milestone!</p>
+                  <time datetime="2026-03-25T09:15">2 days ago</time>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Quick Stats / Chart Placeholder -->
+        <section class="chart-section" aria-labelledby="chart-heading">
+          <div class="section-header">
+            <h3 id="chart-heading">Profile Views</h3>
+            <div class="chart-filters">
+              <button class="filter-btn active" aria-pressed="true">7 days</button>
+              <button class="filter-btn" aria-pressed="false">30 days</button>
+              <button class="filter-btn" aria-pressed="false">All time</button>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-placeholder" role="img" aria-label="Bar chart showing profile views over 7 days">
+              <div class="chart-bar" style="--height: 40%;" data-label="Mon"></div>
+              <div class="chart-bar" style="--height: 65%;" data-label="Tue"></div>
+              <div class="chart-bar" style="--height: 45%;" data-label="Wed"></div>
+              <div class="chart-bar" style="--height: 80%;" data-label="Thu"></div>
+              <div class="chart-bar" style="--height: 55%;" data-label="Fri"></div>
+              <div class="chart-bar" style="--height: 90%;" data-label="Sat"></div>
+              <div class="chart-bar active" style="--height: 100%;" data-label="Sun"></div>
+            </div>
+            <p class="chart-summary">Peak activity on weekends. <span class="positive">+23%</span> vs last week</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Media grid (Projects) -->
+      <section class="media-section" aria-labelledby="media-heading">
+        <div class="section-header">
+          <h3 id="media-heading">My Media</h3>
+          <div class="media-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="video">Videos</button>
+            <button class="filter-btn" data-filter="photo">Photos</button>
+          </div>
+        </div>
+        
+        <div class="media-grid" id="mediaGrid">
+          <article class="media-item video" data-type="video">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=400&fit=crop" alt="Match highlights thumbnail" loading="lazy" />
+              <button class="play-btn" aria-label="Play video">
+                <span class="play-icon">▶</span>
+              </button>
+              <span class="duration">2:34</span>
+            </div>
+            <div class="media-info">
+              <h4>Match highlights</h4>
+              <p>Uploaded 2 days ago • 234 views</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-item video" data-type="video">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=400&h=400&fit=crop" alt="Training drill thumbnail" loading="lazy" />
+              <button class="play-btn" aria-label="Play video">
+                <span class="play-icon">▶</span>
+              </button>
+              <span class="duration">1:45</span>
+            </div>
+            <div class="media-info">
+              <h4>Training drill</h4>
+              <p>Uploaded 1 week ago • 189 views</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-item photo" data-type="photo">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=400&fit=crop" alt="Action photo" loading="lazy" />
+            </div>
+            <div class="media-info">
+              <h4>Action photo</h4>
+              <p>Uploaded 2 weeks ago • 156 likes</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-item photo" data-type="photo">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=400&h=400&fit=crop" alt="Team photo" loading="lazy" />
+            </div>
+            <div class="media-info">
+              <h4>Team photo</h4>
+              <p>Uploaded 3 weeks ago • 89 likes</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-item video" data-type="video">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=400&fit=crop" alt="Goal celebration thumbnail" loading="lazy" />
+              <button class="play-btn" aria-label="Play video">
+                <span class="play-icon">▶</span>
+              </button>
+              <span class="duration">0:45</span>
+            </div>
+            <div class="media-info">
+              <h4>Goal celebration</h4>
+              <p>Uploaded 1 month ago • 567 views</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-item photo" data-type="photo">
+            <div class="media-thumbnail">
+              <img src="https://images.unsplash.com/photo-1461896836934- voices?w=400&h=400&fit=crop" alt="Award ceremony" loading="lazy" />
+            </div>
+            <div class="media-info">
+              <h4>Award ceremony</h4>
+              <p>Uploaded 1 month ago • 234 likes</p>
+              <div class="media-actions">
+                <button class="btn-icon" aria-label="Edit">✏️</button>
+                <button class="btn-icon" aria-label="Share">🔗</button>
+                <button class="btn-icon" aria-label="Delete">🗑️</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Upload Placeholder -->
+          <button class="media-item upload-placeholder" id="uploadTrigger">
+            <div class="upload-content">
+              <span class="upload-icon">+</span>
+              <span class="upload-text">Upload New</span>
+              <span class="upload-hint">Video or Photo</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Create new project button -->
+      <div class="fab-container">
+        <button class="fab" id="fabUpload" aria-label="Upload new media">
+          <span>+</span>
+        </button>
+        <div class="fab-menu" id="fabMenu" role="menu" aria-hidden="true">
+          <button class="fab-option" role="menuitem">📹 Upload Video</button>
+          <button class="fab-option" role="menuitem">📷 Upload Photo</button>
+          <button class="fab-option" role="menuitem">📝 Create Post</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Upload Modal -->
+  <div class="modal" id="uploadModal" role="dialog" aria-modal="true" aria-labelledby="upload-title" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="upload-title">Upload Media</h3>
+        <button class="modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="upload-dropzone" id="dropzone">
+          <div class="dropzone-content">
+            <span class="dropzone-icon">📁</span>
+            <p>Drag and drop files here</p>
+            <p class="dropzone-or">or</p>
+            <button class="btn btn-outline">Browse Files</button>
+            <p class="dropzone-hint">Supports: MP4, MOV, JPG, PNG (Max 500MB)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
