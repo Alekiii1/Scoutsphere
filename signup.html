@@ -1,0 +1,180 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Create your free ScoutSphere account" />
+  <title>ScoutSphere – Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-auth">
+  <a href="dashboard.php" class="skip-link">dashboard</a>
+
+  <!-- Animated sports icons in background -->
+  <div class="sports-bg" aria-hidden="true">
+    <div class="sports-icon icon1">⚽</div>
+    <div class="sports-icon icon2">🏀</div>
+    <div class="sports-icon icon3">⚾</div>
+    <div class="sports-icon icon4">🏈</div>
+    <div class="sports-icon icon5">🏐</div>
+    <div class="sports-icon icon6">🎾</div>
+    <div class="sports-icon icon7">🏉</div>
+    <div class="sports-icon icon8">🏏</div>
+  </div>
+
+  <!-- Confetti container for success animation -->
+  <div class="confetti-container" id="confetti" aria-hidden="true"></div>
+
+  <header class="auth-header">
+    <a href="index.html" class="logo" aria-label="ScoutSphere Home">ScoutSphere</a>
+  </header>
+
+  <main class="auth-container" id="main-content">
+    <div class="auth-card glass-card">
+      <div class="auth-header-text">
+        <h1>Join ScoutSphere</h1>
+        <p class="subtitle">Create your account – it's free forever</p>
+      </div>
+
+      <form class="auth-form" id="signupForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First name</label>
+            <input 
+              type="text" 
+              id="first-name" 
+              name="first-name" 
+              placeholder="John" 
+              required 
+              autocomplete="given-name"
+              aria-describedby="firstname-error"
+            />
+            <span class="error-message" id="firstname-error" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last name</label>
+            <input 
+              type="text" 
+              id="last-name" 
+              name="last-name" 
+              placeholder="Kamau" 
+              required 
+              autocomplete="family-name"
+              aria-describedby="lastname-error"
+            />
+            <span class="error-message" id="lastname-error" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="john@example.com" 
+            required 
+            autocomplete="email"
+            aria-describedby="email-error"
+          />
+          <span class="error-message" id="email-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="user-type">I am a</label>
+          <div class="select-wrapper">
+            <select id="user-type" name="user-type" required aria-describedby="usertype-error">
+              <option value="" disabled selected>Select user type</option>
+              <option value="athlete">Athlete</option>
+              <option value="scout">Scout</option>
+              <option value="academy">Academy / Coach</option>
+            </select>
+          </div>
+          <span class="error-message" id="usertype-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-input-wrapper">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Create a strong password" 
+              required 
+              minlength="8"
+              autocomplete="new-password"
+              aria-describedby="password-hint password-error"
+            />
+            <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false">
+              <span class="eye-icon">👁️</span>
+            </button>
+          </div>
+          <div class="password-strength" id="passwordStrength" aria-hidden="true">
+            <div class="strength-bar">
+              <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <span class="strength-text" id="strengthText">Password strength</span>
+          </div>
+          <span class="hint" id="password-hint">Must be at least 8 characters with letters and numbers</span>
+          <span class="error-message" id="password-error" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm password</label>
+          <input 
+            type="password" 
+            id="confirm-password" 
+            name="confirm-password" 
+            placeholder="Re-enter password" 
+            required 
+            autocomplete="new-password"
+            aria-describedby="confirm-error"
+          />
+          <span class="error-message" id="confirm-error" role="alert"></span>
+        </div>
+
+        <div class="form-group terms-group">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="terms" name="terms" required />
+            <span class="checkmark"></span>
+            <span class="terms-text">I agree to the <a href="#" class="text-link">Terms of Service</a> and <a href="#" class="text-link">Privacy Policy</a></span>
+          </label>
+          <span class="error-message" id="terms-error" role="alert"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-loading" id="signupBtn">
+          <span class="btn-text">Create Account</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+
+        <div class="auth-divider">
+          <span>or sign up with</span>
+        </div>
+
+        <div class="social-login">
+          <button type="button" class="btn btn-social" aria-label="Sign up with Google">
+            <span class="icon">G</span> Google
+          </button>
+          <button type="button" class="btn btn-social" aria-label="Sign up with Apple">
+            <span class="icon">🍎</span> Apple
+          </button>
+        </div>
+
+        <div class="auth-switch">
+          Already have an account? <a href="login.html" class="text-link accent">Log in</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="auth-footer">
+    <p>© 2026 ScoutSphere. All rights reserved.</p>
+  </footer>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
